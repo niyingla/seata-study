@@ -1,0 +1,46 @@
+seata:
+   enabled: true
+   application-id: client
+   tx-service-group: my_test_tx_group
+   config:
+      type: nacos
+      file:
+         name: file.conf
+      nacos:
+         namespace:
+         serverAddr: 49.235.144.187:8848
+         group: SEATA_GROUP
+         userName: "nacos"
+         password: "nacos"
+   registry:
+      type: nacos
+      nacos:
+         application: seata-server
+         server-addr: 49.235.144.187:8848
+         namespace:
+         userName: "nacos"
+         password: "nacos"
+
+spring:
+   # redis 配置
+   redis:
+      # 地址
+      host: 49.235.144.187
+      # 端口，默认为6379
+      port: 7000
+      # 密码
+      password: 398023
+      #数据库
+      database: 15
+      # 连接超时时间
+      timeout: 10s
+      lettuce:
+         pool:
+            # 连接池中的最小空闲连接
+            min-idle: 8
+            # 连接池中的最大空闲连接
+            max-idle: 8
+            # 连接池的最大数据库连接数
+            max-active: 20
+            # #连接池最大阻塞等待时间（使用负值表示没有限制）
+            max-wait: 6000ms
